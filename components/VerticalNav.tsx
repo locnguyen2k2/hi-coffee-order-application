@@ -12,9 +12,9 @@ import { ArrowLeftOnRectangleIcon, ArrowLeftCircleIcon, IdentificationIcon, News
 
 import { navigate } from './RootNavigation'
 import { FadeInView } from '../constants/FadeView'
-import accountService from '../services/accountService'
+import accountService from '../src/services/accountService'
 import * as RootNavigation from './../components/RootNavigation'
-import { selectVerticalNav, setSignout, setVerticalNav } from '../balanceSlice'
+import { selectVerticalNav, setSignout, setVerticalNav } from '../src/store/balanceSlice'
 
 export default function VerticalNav() {
 

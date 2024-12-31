@@ -4,8 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { TableCellsIcon, BellIcon, ShoppingCartIcon, ClipboardDocumentListIcon } from "react-native-heroicons/outline";
 import { useSelector } from 'react-redux';
-import { selectorOrderQuantity } from '../balanceSlice';
-import { navigationRef } from '../components/RootNavigation';
+import { selectorOrderQuantity } from '../store/balanceSlice';
+import { navigationRef } from '../../components/RootNavigation';
 import { View, Text } from 'react-native'
 const Tab = createBottomTabNavigator()
 

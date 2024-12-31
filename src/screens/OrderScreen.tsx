@@ -4,9 +4,9 @@ import {
     Text,
     TouchableOpacity
 } from 'react-native'
-import ListItem from '../components/ListItem'
-import Header from '../components/HeaderItem'
-import VerticalNav from '../components/VerticalNav'
+import ListItem from '../../components/ListItem'
+import Header from '../../components/HeaderItem'
+import VerticalNav from '../../components/VerticalNav'
 
 export default function OrderScreen({ navigation }: any) {
     const [selectCategory, setSelectCategory] = useState(null);

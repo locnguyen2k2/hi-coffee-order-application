@@ -3,10 +3,10 @@ import {
     View,
 } from 'react-native'
 
-import ListItem from '../components/ListItem'
+import ListItem from '../../components/ListItem'
 
-import Header from '../components/HeaderItem';
-import VerticalNav from '../components/VerticalNav';
+import Header from '../../components/HeaderItem';
+import VerticalNav from '../../components/VerticalNav';
 
 export default function TableScreen({ navigation }: any) {
 

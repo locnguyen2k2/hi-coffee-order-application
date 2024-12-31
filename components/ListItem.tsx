@@ -6,11 +6,11 @@ import {
     TouchableOpacity,
 } from 'react-native'
 import Items from './Item'
-import foodService from "../services/foodService";
-import tableService from "../services/tableService";
+import foodService from "../src/services/foodService";
+import tableService from "../src/services/tableService";
 import { useDispatch, useSelector } from "react-redux";
-import categoryService from "../services/categoryService";
-import { setOrderFood, setOrderTable, setOrderTotal, selectTables, setTables } from "../balanceSlice";
+import categoryService from "../src/services/categoryService";
+import { setOrderFood, setOrderTable, setOrderTotal, selectTables, setTables } from "../src/store/balanceSlice";
 
 
 function ListCategory({ categoryClick = undefined }: any) {
@@ -177,8 +177,8 @@ function ListFood({ category }: any) {
                             ({ item }: any) =>
                                 <TouchableOpacity
                                     onPress={() => {
-                                        dispatch(setOrderFood({ foods: [{ food_name: item.name, price: item.price, quantity: 1 }] }))
-                                        dispatch(setOrderTotal({ add: true, total: item.price }))
+                                        dispatch(setOrderFood({ foods: [{ food_name: item.name, price: parseInt(item.price), quantity: 1 }] }))
+                                        dispatch(setOrderTotal({ add: true, total: parseInt(item.price) }))
                                     }}
                                 >
                                     <Items.FoodItem item={item} />

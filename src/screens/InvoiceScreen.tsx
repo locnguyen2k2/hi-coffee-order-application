@@ -8,11 +8,11 @@ import {
     ScrollView
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectOrderInfo, setOrderTable, selectTables } from '../balanceSlice'
-import ListItem from '../components/ListItem'
-import { ArrowLeftCircleIcon, EllipsisHorizontalCircleIcon } from 'react-native-heroicons/outline';
-import Header from '../components/HeaderItem'
-import VerticalNav from '../components/VerticalNav'
+import { selectOrderInfo, setOrderTable, selectTables } from '../store/balanceSlice'
+import ListItem from '../../components/ListItem'
+import { ArrowLeftCircleIcon } from 'react-native-heroicons/outline';
+import Header from '../../components/HeaderItem'
+import VerticalNav from '../../components/VerticalNav'
 import invoiceService from '../services/invoiceService'
 
 export default function PaymentScreen({ navigation }: any) {
@@ -133,7 +133,7 @@ export default function PaymentScreen({ navigation }: any) {
                                                                 {item.id}
                                                             </Text>
                                                             <Text style={[styles.item, { width: (screenWidth - 18) / 3, borderBottomWidth: index == listInvoice.length - 1 ? 1 : .5 }]} numberOfLines={1}>
-                                                                {item.total.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + " VND"}
+                                                                {parseInt(item.total).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + " VND"}
                                                             </Text>
                                                             <Text style={[styles.item, { width: (screenWidth - 18) / 5, borderBottomWidth: index == listInvoice.length - 1 ? 1 : .5 }]} numberOfLines={1}>
                                                                 {item.quantity}

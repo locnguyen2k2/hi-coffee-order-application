@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ipv4 } from '../constants/IPv4'
+import {APP_BASE_API_URL, ipv4} from '../../constants/IPv4'
 const addOrder = async (data: any) => {
     let formData = new FormData()
     if (data.foods != undefined) {
@@ -14,9 +14,9 @@ const addOrder = async (data: any) => {
             data: formData,
             method: 'post',
             headers: { "Content-Type": "multipart/form-data" },
-            url: 'http://' + ipv4() + '/CoffeeOrder/api/ordercontroller/addorder',
+            url: 'http://' + ipv4() + `/${APP_BASE_API_URL}/api/them-don-dat`,
         })
-    } catch (error) { console.log(error) }
+    } catch (error) { console.log('loi') }
 }
 const orderPayment = async ({ orderID, foodID }: any) => {
     const formData = new FormData()
@@ -27,7 +27,7 @@ const orderPayment = async ({ orderID, foodID }: any) => {
                 data: formData,
                 method: 'post',
                 headers: { "Content-Type": "multipart/form-data" },
-                url: 'http://' + ipv4() + '//CoffeeOrder/api/ordercontroller/processorderpayment',
+                url: 'http://' + ipv4() + `/${APP_BASE_API_URL}/api/ordercontroller/processorderpayment`,
             })
         } catch (error) { console.log(error) }
     }
@@ -42,7 +42,7 @@ const orderPaymentAll = async ({ invoiceID }: any) => {
                 data: formData,
                 method: 'post',
                 headers: { "Content-Type": "multipart/form-data" },
-                url: 'http://' + ipv4() + '//CoffeeOrder/api/ordercontroller/processallorderpayment',
+                url: 'http://' + ipv4() + `/${APP_BASE_API_URL}/api/ordercontroller/processallorderpayment`,
             })
         } catch (error) { console.log(error) }
     }
@@ -56,7 +56,7 @@ const deleteOrder = async ({ orderID, foodID }: any) => {
                 data: formData,
                 method: 'post',
                 headers: { "Content-Type": "multipart/form-data" },
-                url: 'http://' + ipv4() + '//CoffeeOrder/api/ordercontroller/deleteorder',
+                url: 'http://' + ipv4() + `/${APP_BASE_API_URL}/api/ordercontroller/deleteorder`,
             })
         } catch (error) { console.log(error) }
     }
@@ -65,17 +65,17 @@ const updateOrder = async ({ orderID, foodID, foodName, tableName, quantity }: a
     const formData = new FormData();
     if (
         orderID != undefined && foodID != undefined && foodName != undefined && tableName != undefined && quantity != undefined) {
-        formData.append('id', orderID + '.' + foodID)
-        formData.append('table_name', tableName)
-        formData.append('food_name', foodName)
-        formData.append('quantity', quantity)
-        formData.append('btn-update', true)
+            formData.append('id', orderID + '.' + foodID)
+            formData.append('table_name', tableName)
+            formData.append('food_name', foodName)
+            formData.append('quantity', quantity)
+            formData.append('btn-update', true)
         try {
             return await axios({
                 data: formData,
                 method: 'post',
                 headers: { "Content-Type": "multipart/form-data" },
-                url: 'http://' + ipv4() + '//CoffeeOrder/api/ordercontroller/updateorder',
+                url: 'http://' + ipv4() + `/${APP_BASE_API_URL}/api/ordercontroller/updateorder`,
             })
         } catch (error) { console.log(error) }
     }

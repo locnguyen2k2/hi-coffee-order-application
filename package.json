@@ -20,7 +20,7 @@
     "expo-linear-gradient": "^12.5.0",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
-    "react-native": "0.72.7",
+    "react-native": "^0.72.17",
     "react-native-date-picker": "^4.3.5",
     "react-native-element-dropdown": "^2.10.1",
     "react-native-gesture-handler": "^2.13.4",

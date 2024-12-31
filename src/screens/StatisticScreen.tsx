@@ -7,8 +7,8 @@ import {
     TouchableOpacity,
     ScrollView,
 } from 'react-native'
-import Header from '../components/HeaderItem'
-import VerticalNav from '../components/VerticalNav'
+import Header from '../../components/HeaderItem'
+import VerticalNav from '../../components/VerticalNav'
 import { BarChart } from 'react-native-gifted-charts'
 import DatePicker from 'react-native-date-picker'
 import statisticService from '../services/statisticService'
@@ -48,7 +48,7 @@ export default function StatisticScreen({ navigation }: any) {
             let year = fromDate.getFullYear()
             statisticService.getInDay(type, 'day', `${year}-${month + 1}-${day}`, null)
                 .then((res: any) => {
-                    if (res.data.error == 0) {
+                    if (res.data.result.length > 0) {
                         setData(res.data.result)
                         setMaxValue(res.data.result[0].maxValue)
                     } else {
@@ -64,6 +64,8 @@ export default function StatisticScreen({ navigation }: any) {
             let yearT = toDate.getFullYear()
             statisticService.getInDay(type, 'range', `${yearF}-${monthF + 1}-${dayF}`, `${yearT}-${monthT + 1}-${dayT}`)
                 .then((res: any) => {
+                    console.log(res)
+
                     if (res.data.error == 0) {
                         setData(res.data.result)
                         setMaxValue(res.data.result[0].maxValue)
@@ -73,7 +75,6 @@ export default function StatisticScreen({ navigation }: any) {
                 })
         }
     }, [fromDate, toDate, type])
-    console.log(data[1].value)
     return (
         <>
             <Header title={'Thống kê '} />
@@ -168,12 +169,12 @@ export default function StatisticScreen({ navigation }: any) {
                     backgroundColor: '#C09440',
                 }}>
                     {
-                        data.length && maxValue != 0 > 0 ?
+                        data?.length && maxValue != 0 > 0 ?
                             <View>
-                                {/* <BarChart
-                                    showLine
-                                    hideRules
-                                    isAnimated
+                                <BarChart
+                                    showLine={true}
+                                    hideRules={true}
+                                    isAnimated={true}
                                     data={data}
                                     spacing={75}
                                     height={250}
@@ -193,14 +194,14 @@ export default function StatisticScreen({ navigation }: any) {
                                     lineConfig={{ color: '#F29C6E' }}
                                     topLabelContainerStyle={{ textAlign: 'center' }}
                                     topLabelTextStyle={{ color: '#b91c1c', fontWeight: 500 }}
-                                /> */}
-                                
+                                />
+
                             </View>
                             : ""
                     }
                 </View>
                 {
-                    data.length > 0 ?
+                    data?.length > 0 ?
                         <View style={{ marginTop: 5, }}>
                             <Text style={{ color: '#C09440', fontSize: 18, textAlign: 'center' }}>
                                 Thống kê doanh thu theo:

@@ -6,10 +6,10 @@ import {
 } from 'react-native'
 import accountService from '../services/accountService'
 import { useDispatch } from 'react-redux'
-import { setSignout } from '../balanceSlice'
+import { setSignout } from '../store/balanceSlice'
 import LoginScreen from './LoginScreen'
-import Header from '../components/HeaderItem'
-import VerticalNav from '../components/VerticalNav'
+import Header from '../../components/HeaderItem'
+import VerticalNav from '../../components/VerticalNav'
 
 export default function ProfileScreen({ navigation }: any) {
     const dispath = useDispatch()

@@ -3,7 +3,7 @@ import {
 } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { Squares2X2Icon } from 'react-native-heroicons/outline'
-import { selectVerticalNav, setVerticalNav } from '../balanceSlice';
+import { selectVerticalNav, setVerticalNav } from '../src/store/balanceSlice';
 
 export default function Header({ title }: any) {
     const dispatch = useDispatch();

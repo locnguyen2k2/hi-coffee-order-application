@@ -9,11 +9,11 @@ import {
     Alert
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectOrderInfo, setOrderTable, selectTables } from '../balanceSlice'
-import ListItem from '../components/ListItem'
+import { selectOrderInfo, setOrderTable, selectTables } from '../store/balanceSlice'
+import ListItem from '../../components/ListItem'
 import { ArrowLeftCircleIcon, EllipsisHorizontalCircleIcon } from 'react-native-heroicons/outline';
-import Header from '../components/HeaderItem'
-import VerticalNav from '../components/VerticalNav'
+import Header from '../../components/HeaderItem'
+import VerticalNav from '../../components/VerticalNav'
 import invoiceService from '../services/invoiceService'
 
 export default function DetialInvoiceScreen({ navigation, route }: any) {
@@ -142,14 +142,14 @@ export default function DetialInvoiceScreen({ navigation, route }: any) {
                             {invoicePaid.length > 0 ?
                                 invoicePaid.map((item: any, index: any) => {
                                     return (
-                                        <Text key={index} style={[styles.content2]}>{item.price.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</Text>
+                                        <Text key={index} style={[styles.content2]}>{parseInt(item.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</Text>
                                     )
                                 })
                                 : ""}
                             {invoiceUnpaid.length > 0 ?
                                 invoiceUnpaid.map((item: any, index: any) => {
                                     return (
-                                        <Text key={index} style={[styles.content2, { color: 'red' }]}>{item.price.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</Text>
+                                        <Text key={index} style={[styles.content2, { color: 'red' }]}>{parseInt(item.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</Text>
                                     )
                                 }) : ""}
                         </View>
@@ -179,13 +179,13 @@ export default function DetialInvoiceScreen({ navigation, route }: any) {
                                 invoicePaid.length > 0 ?
                                     invoicePaid.map((item: any, index: any) => {
                                         return (
-                                            <Text key={index} style={[styles.content2]}>{item.total.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</Text>
+                                            <Text key={index} style={[styles.content2]}>{parseInt(item.total).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</Text>
                                         )
                                     }) : ""}
                             {invoiceUnpaid.length > 0 ?
                                 invoiceUnpaid.map((item: any, index: any) => {
                                     return (
-                                        <Text key={index} style={[styles.content2, { color: 'red' }]}>{item.total.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</Text>
+                                        <Text key={index} style={[styles.content2, { color: 'red' }]}>{parseInt(item.total).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</Text>
                                     )
                                 }) : ""
                             }
@@ -197,7 +197,7 @@ export default function DetialInvoiceScreen({ navigation, route }: any) {
                         invoiceUnpaid.length > 0 ?
                             <View style={[styles.item]}>
                                 <Text style={[styles.title, { color: 'red' }]}>Chưa thanh toán: </Text>
-                                <Text style={[styles.content, { color: 'red' }]}>{totals.unpaid.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + " VND"} ({invoiceUnpaid.length})</Text>
+                                <Text style={[styles.content, { color: 'red' }]}>{parseInt(totals.unpaid).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + " VND"} ({invoiceUnpaid.length})</Text>
                             </View>
                             : ""
                     }
@@ -206,7 +206,7 @@ export default function DetialInvoiceScreen({ navigation, route }: any) {
                             invoicePaid.length > 0 ?
                                 <View style={[styles.item]}>
                                     <Text style={[styles.title, { color: 'white' }]}>Đã thanh toán: </Text>
-                                    <Text style={[styles.content, { color: 'white' }]}>{totals.paid.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + " VND"} ({invoicePaid.length})</Text>
+                                    <Text style={[styles.content, { color: 'white' }]}>{parseInt(totals.paid).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + " VND"} ({invoicePaid.length})</Text>
                                 </View>
                                 : ""
                         }

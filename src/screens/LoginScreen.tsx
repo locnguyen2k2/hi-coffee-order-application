@@ -9,11 +9,11 @@ import {
     TouchableOpacity
 } from 'react-native'
 import { useDispatch } from 'react-redux'
-import { setSignin } from '../balanceSlice'
-import Header from '../components/HeaderItem'
-import { coffeeBgLogin } from '../assets/images'
+import { setSignin } from '../store/balanceSlice'
+import Header from '../../components/HeaderItem'
+import { coffeeBgLogin } from '../../assets/images'
 import accountService from '../services/accountService'
-import * as RootNavigation from './../components/RootNavigation'
+import * as RootNavigation from '../../components/RootNavigation'
 export default function LoginScreen() {
     const dispatch = useDispatch()
     type userProps = {

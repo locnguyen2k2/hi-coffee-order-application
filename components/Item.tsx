@@ -6,10 +6,10 @@ import {
     Dimensions,
     StyleSheet,
 } from 'react-native'
-import { ipv4 } from "../constants/IPv4";
+import {APP_BASE_API_URL, ipv4} from "../constants/IPv4";
 import { empty } from '../assets/images/index'
 import { useSelector } from "react-redux";
-import { selectOrderInfo } from "../balanceSlice";
+import { selectOrderInfo } from "../src/store/balanceSlice";
 
 
 function CategoryItem(item: any) {
@@ -103,7 +103,7 @@ function FoodItem(item: any, selected: boolean) {
                 {item.item.imageName != null ?
                     <Image
                         style={styles.image}
-                        source={{ uri: 'http://' + ipv4() + '/coffeeOrder/public/static/imgs/uploadfiles/' + item.item.imageName }}
+                        source={{ uri: 'http://' + ipv4() + `/${APP_BASE_API_URL}/public/static/imgs/uploadfiles/` + item.item.imageName }}
                     />
                     :
                     <Image style={styles.image} source={empty} />}
@@ -114,7 +114,7 @@ function FoodItem(item: any, selected: boolean) {
                 </Text>
 
                 <Text style={{ color: 'gray', fontSize: 10 }}>
-                    {item.item.price.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + " VND"}
+                    {parseInt(item.item.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + " VND"}
                 </Text>
             </View>
         </View>

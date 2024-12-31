@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { ipv4 } from '../constants/IPv4'
+import {APP_BASE_API_URL, ipv4} from '../../constants/IPv4'
 const getListCategory = async () => {
     try {
-        return await axios.get('http://' + ipv4() + '/CoffeeOrder/api/categorycontroller/getlistcategory')
+        return await axios.get('http://' + ipv4() + `/${APP_BASE_API_URL}/api/CategoryController/getListCategory/`)
     } catch (error) { console.log(error) }
 }
 
@@ -11,7 +11,7 @@ const getListCategory = async () => {
 //     formData.append('name', name)
 //     try {
 //         return await axios({
-//             url: 'http://' + ipv4() + '/CoffeeOrder/api/categorycontroller/addCategory',
+//             url: 'http://' + ipv4() + '/${APP_BASE_API_URL/api/categorycontroller/addCategory',
 //             method: 'post',
 //             data: formData,
 //             headers: { "Content-Type": "multipart/form-data" }
